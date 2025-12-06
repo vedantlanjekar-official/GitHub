@@ -64,14 +64,21 @@ def contribute(date):
 
 
 def run(commands):
-    Popen(commands).wait()
+    """Execute a shell command and wait for completion."""
+    process = Popen(commands)
+    exit_code = process.wait()
+    if exit_code != 0:
+        print(f"Warning: Command {' '.join(commands)} exited with code {exit_code}")
+    return exit_code
 
 
 def message(date):
+    """Generate a commit message for the given date."""
     return date.strftime('Contribution: %Y-%m-%d %H:%M')
 
 
 def contributions_per_day(args):
+    """Calculate the number of contributions for a day based on max_commits setting."""
     max_c = args.max_commits
     if max_c > 20:
         max_c = 20
