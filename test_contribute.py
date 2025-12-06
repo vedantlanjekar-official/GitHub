@@ -1,3 +1,8 @@
+"""
+Unit tests for the contribute module.
+
+This test suite verifies the functionality of the GitHub contribution generator.
+"""
 import unittest
 import contribute
 from subprocess import check_output
